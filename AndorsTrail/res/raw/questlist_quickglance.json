@@ -1,0 +1,54 @@
+[
+    {
+        "id":"quick_glance",
+        "name":"A Quick Glance",
+        "showInLog":1,
+        "stages":[
+            {
+                "progress":10,
+                "logText":"I talked to Anakis. He told me, that his brother went into the cave and did not came out again."
+            },
+            {
+                "progress":20,
+                "logText":"I agreed to help Anakis find his brother."
+            },
+            {
+                "progress":40,
+                "logText":"I found a stone statue looking almost like a real human."
+            },
+            {
+                "progress":50,
+                "logText":"I told Anakis about the statue. He thinks that it is his brother and thanks me for helping him.",
+                "rewardExperience":50
+            },
+            {
+                "progress":60,
+                "logText":"Anakis asked me if I could take revenge for his brother."
+            },
+            {
+                "progress":70,
+                "logText":"I agreed to take revenge for Anakis' brother by finding the stone turning monster."
+            },
+            {
+                "progress":80,
+                "logText":"I killed the Basilisk."
+            },
+            {
+                "progress":90,
+                "logText":"I told Anakis about killing the Basilisk and he thanked me.",
+                "rewardExperience":100,
+                "finishesQuest":1
+            }
+        ]
+    },
+    {
+        "id":"quick_glance_hidden",
+        "name":"quick_glance_hidden",
+        "stages":[
+            {
+                "progress":10,
+                "logText":"Found Statue"
+            }
+        ]
+    }
+]

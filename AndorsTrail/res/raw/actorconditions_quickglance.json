@@ -1,0 +1,21 @@
+[
+    {
+        "id":"turn_to_stone",
+        "iconID":"actorconditions_1:89",
+        "name":"Turning to stone",
+        "category":"physical",
+        "roundEffect":{
+            "increaseCurrentHP":{
+                "min":-100000,
+                "max":-100000
+            },
+            "increaseCurrentAP":{
+                "min":-1000,
+                "max":-1000
+            }
+        },
+        "abilityEffect":{
+            "increaseMoveCost":1000
+        }
+    }
+]

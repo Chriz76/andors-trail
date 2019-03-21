@@ -1,0 +1,30 @@
+[
+    {
+        "id":"old_basilisk",
+        "name":"Old Basilisk",
+        "iconID":"monsters_rats:4",
+        "maxHP":1,
+        "unique":1,
+        "monsterClass":"reptile",
+        "attackDamage":{
+            "min":3,
+            "max":9
+        },
+        "spawnGroup":"basiliskcave2_boss",
+        "droplistID":"cavecritter",
+        "attackCost":7,
+        "attackChance":40,
+        "blockChance":50,
+        "damageResistance":0,
+        "deathEffect":{
+            
+        }
+    },
+    {
+        "id":"anakis",
+        "name":"Anakis",
+        "iconID":"monsters_ld1:84",
+        "spawnGroup":"basiliskcave1_anakis",
+        "phraseID":"anakis_start"
+    }
+]

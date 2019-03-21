@@ -1,0 +1,13 @@
+[
+    {
+        "id":"hand_mirror",
+        "iconID":"items_japozero:457",
+        "name":"Hand mirror",
+        "category":"shld_mtl_li",
+        "equipEffect":{
+            "increaseMoveCost":1,
+            "increaseAttackCost":1,
+            "increaseBlockChance":-3
+        }
+    }
+]
