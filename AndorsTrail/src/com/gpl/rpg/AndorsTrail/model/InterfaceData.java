@@ -23,6 +23,9 @@ public final class InterfaceData {
 	public int selectedSkillSort = 0; //Unsorted
 	public int selectedShopSort = 0; //Unsorted
 
+	public Coord conversationNPC;
+	public String conversationPhrase = "";
+
 	public InterfaceData() { }
 
 
@@ -38,6 +41,12 @@ public final class InterfaceData {
 			this.selectedPosition = null;
 		}
 		this.selectedTabHeroInfo = src.readUTF();
+		this.conversationPhrase = src.readUTF();
+		if (src.readBoolean()) {
+			this.conversationNPC = new Coord(src, fileversion);
+		} else {
+			this.conversationNPC = null;
+		}
 	}
 
 	public void writeToParcel(DataOutputStream dest) throws IOException {
@@ -50,5 +59,12 @@ public final class InterfaceData {
 			dest.writeBoolean(false);
 		}
 		dest.writeUTF(selectedTabHeroInfo);
+		dest.writeUTF(conversationPhrase);
+		if (conversationNPC != null) {
+			dest.writeBoolean(true);
+			conversationNPC.writeToParcel(dest);
+		} else {
+			dest.writeBoolean(false);
+		}
 	}
 }

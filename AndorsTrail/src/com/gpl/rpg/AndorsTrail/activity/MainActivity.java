@@ -79,11 +79,16 @@ public final class MainActivity
 	private WeakReference<Toast> lastToast = null;
 	//private ContextMenuInfo lastSelectedMenu = null;
 	private OnLongClickListener quickButtonLongClickListener = null;
+	private boolean isConversationDialogueOpen = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		setTheme(ThemeHelper.getNoBackgroundTheme());
 		super.onCreate(savedInstanceState);
+
+		if(savedInstanceState != null) {
+			this.isConversationDialogueOpen=savedInstanceState.getBoolean("isConversationDialogueOpen");
+		}
 
 		AndorsTrailApplication app = AndorsTrailApplication.getApplicationFromActivity(this);
 		if (!app.isInitialized()) { finish(); return; }
@@ -131,6 +136,12 @@ public final class MainActivity
 	}
 
 	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		outState.putBoolean("isConversationDialogueOpen", this.isConversationDialogueOpen);
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) {
@@ -142,7 +153,17 @@ public final class MainActivity
 			}
 			break;
 		case INTENTREQUEST_CONVERSATION:
-			controllers.mapController.applyCurrentMapReplacements(getResources(), true);
+			isConversationDialogueOpen = false;
+			if(resultCode == Activity.RESULT_FIRST_USER)
+			{
+				save(Savegames.SLOT_QUICKSAVE);
+				finish();
+			}
+			else {
+				world.model.uiSelections.conversationPhrase = "";
+				controllers.mapController.applyCurrentMapReplacements(getResources(), true);
+			}
+
 			break;
 		case INTENTREQUEST_SAVEGAME:
 			if (resultCode != Activity.RESULT_OK) break;
@@ -165,6 +186,19 @@ public final class MainActivity
 	protected void onStart() {
 		super.onStart();
 		if (!AndorsTrailApplication.getApplicationFromActivity(this).getWorldSetup().isSceneReady) return;
+
+		if(!this.isConversationDialogueOpen && !this.world.model.uiSelections.conversationPhrase.equalsIgnoreCase(""))
+		{
+			Monster m = null;
+			if (this.world.model.uiSelections.conversationNPC != null)
+			{
+				m = this.world.model.currentMap.getMonsterAt(this.world.model.uiSelections.conversationNPC);
+			}
+
+			Dialogs.showConversation(this, controllers, this.world.model.uiSelections.conversationPhrase, m);
+			isConversationDialogueOpen=true;
+		}
+
 		subscribeToModelChanges();
 	}
 
@@ -374,11 +408,13 @@ public final class MainActivity
 	@Override
 	public void onPlayerStartedConversation(Monster m, String phraseID) {
 		Dialogs.showConversation(this, controllers, phraseID, m);
+		isConversationDialogueOpen=true;
 	}
 
 	@Override
 	public void onScriptAreaStartedConversation(String phraseID) {
 		Dialogs.showMapScriptMessage(this, controllers, phraseID);
+		isConversationDialogueOpen=true;
 	}
 
 	@Override

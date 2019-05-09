@@ -346,7 +346,12 @@ public final class ConversationController {
 			this.listener = listener;
 		}
 
-		public void setCurrentNPC(Monster currentNPC) { this.npc = currentNPC; }
+		public void setCurrentNPC(Monster currentNPC)
+		{
+			this.npc = currentNPC;
+			world.model.uiSelections.conversationNPC = currentNPC.position;
+		}
+
 		public Monster getCurrentNPC() { return npc; }
 		public String getCurrentPhraseID() { return currentPhraseID; }
 
@@ -368,6 +373,7 @@ public final class ConversationController {
 			void onScriptEffectsApplied(ScriptEffectResult scriptEffectResult);
 			void onConversationCanProceedWithNext();
 			void onConversationHasReply(Reply r, String message);
+			void onConversationCanLeave(boolean b);
 		}
 
 		private void setCurrentPhrase(final Resources res, String phraseID) {
@@ -379,20 +385,26 @@ public final class ConversationController {
 			if (this.currentPhrase.switchToNPC != null) {
 				setCurrentNPC(world.model.currentMap.findSpawnedMonster(this.currentPhrase.switchToNPC));
 			}
+
+			world.model.uiSelections.conversationPhrase = phraseID;
 		}
 
 		public void proceedToPhrase(final Resources res, String phraseID, boolean applyScriptEffects, boolean displayPhraseMessage) {
 			if (phraseID.equalsIgnoreCase(ConversationCollection.PHRASE_CLOSE)) {
 				listener.onConversationEnded();
+				world.model.uiSelections.conversationPhrase = "";
 				return;
 			} else if (phraseID.equalsIgnoreCase(ConversationCollection.PHRASE_SHOP)) {
 				listener.onConversationEndedWithShop(npc);
+				world.model.uiSelections.conversationPhrase = "";
 				return;
 			} else if (phraseID.equalsIgnoreCase(ConversationCollection.PHRASE_ATTACK)) {
 				endConversationWithCombat();
+				world.model.uiSelections.conversationPhrase = "";
 				return;
 			} else if (phraseID.equalsIgnoreCase(ConversationCollection.PHRASE_REMOVE)) {
 				endConversationWithRemovingNPC();
+				world.model.uiSelections.conversationPhrase = "";
 				return;
 			}
 
@@ -417,14 +429,25 @@ public final class ConversationController {
 				listener.onTextPhraseReached(message, npc, phraseID);
 			}
 
+			boolean hasAtLeastOneReply = false;
+
 			if (hasOnlyOneNextReply()) {
 				listener.onConversationCanProceedWithNext();
-				return;
+				hasAtLeastOneReply = true;
+			}
+			else {
+
+				for (Reply r : currentPhrase.replies) {
+					if (!canSelectReply(world, r)) continue;
+					listener.onConversationHasReply(r, getDisplayMessage(r, player));
+					hasAtLeastOneReply = true;
+				}
 			}
 
-			for (Reply r : currentPhrase.replies) {
-				if (!canSelectReply(world, r)) continue;
-				listener.onConversationHasReply(r, getDisplayMessage(r, player));
+			if (hasAtLeastOneReply && currentPhrase.message != null && currentPhrase.message.endsWith("(NOLEAVE)")) {
+				listener.onConversationCanLeave(false);
+			} else {
+				listener.onConversationCanLeave(true);
 			}
 		}
 

@@ -3,16 +3,19 @@ package com.gpl.rpg.AndorsTrail.activity;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -28,6 +31,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
+import android.widget.Toast;
 
 import com.gpl.rpg.AndorsTrail.AndorsTrailApplication;
 import com.gpl.rpg.AndorsTrail.Dialogs;
@@ -44,6 +48,7 @@ import com.gpl.rpg.AndorsTrail.model.quest.QuestLogEntry;
 import com.gpl.rpg.AndorsTrail.model.quest.QuestProgress;
 import com.gpl.rpg.AndorsTrail.resource.tiles.TileManager;
 import com.gpl.rpg.AndorsTrail.util.ThemeHelper;
+import com.gpl.rpg.AndorsTrail.view.CustomDialogFactory;
 
 public final class ConversationActivity
 		extends Activity
@@ -58,6 +63,7 @@ public final class ConversationActivity
 
 	private StatementContainerAdapter listAdapter;
 	private Button nextButton;
+	private Button leaveButton;
 	private ListView statementList;
 	private RadioGroup replyGroup;
 	private OnCheckedChangeListener radioButtonListener;
@@ -84,7 +90,7 @@ public final class ConversationActivity
 		statementList.setAdapter(listAdapter);
 
 		nextButton = (Button) findViewById(R.id.conversation_next);
-		Button leaveButton = (Button) findViewById(R.id.conversation_leave);
+		leaveButton = (Button) findViewById(R.id.conversation_leave);
 		leaveButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -127,7 +133,35 @@ public final class ConversationActivity
 			phraseID = getIntent().getData().getLastPathSegment();
 			applyScriptEffectsForFirstPhrase = getIntent().getBooleanExtra("applyScriptEffectsForFirstPhrase", true);
 		}
+
+
+
 		conversationState.proceedToPhrase(getResources(), phraseID, applyScriptEffectsForFirstPhrase, displayLastMessage);
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+        if (!leaveButton.isEnabled()) {
+            Rect r = new Rect();
+            this.getWindow().getDecorView().getHitRect(r);
+
+            if (r.contains((int) event.getX(), (int) event.getY())) {
+                return super.onTouchEvent(event);
+            } else {
+
+                return true;
+            }
+        }
+        else
+        {
+            return super.onTouchEvent(event);
+        }
+	}
+
+
+	@Override
+	protected void onDestroy(){
+		super.onDestroy();
 	}
 
 	@Override
@@ -184,9 +218,50 @@ public final class ConversationActivity
 		return handleKeypress(keyCode);
 	}
 
+	private long mBackPressed = 0;
+	private Toast t = null;
+
 	public boolean handleKeypress(int keyCode) {
 		int selectedReplyIndex = getSelectedReplyIndex();
 		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+            if (!leaveButton.isEnabled())
+			{
+				if (mBackPressed + 2000 > System.currentTimeMillis())
+				{
+					if (t!=null)
+						t.cancel();
+
+					setResult(RESULT_FIRST_USER);
+					ConversationActivity.this.finish();
+				}
+				else { t = Toast.makeText(getBaseContext(), "Tap back button in order to exit", Toast.LENGTH_SHORT);
+					t.show(); }
+
+				mBackPressed = System.currentTimeMillis();
+			}
+//			if (!leaveButton.isEnabled())
+//			{
+//				final Dialog d = CustomDialogFactory.createDialog(this,
+//						"1",
+//						getResources().getDrawable(android.R.drawable.ic_delete),
+//						"2",
+//						null,
+//						true);
+//				CustomDialogFactory.addButton(d, android.R.string.ok, new View.OnClickListener() {
+//					@Override
+//					public void onClick(View v) {
+//						setResult(RESULT_FIRST_USER);
+//						ConversationActivity.this.finish();
+//					}
+//				});
+//				CustomDialogFactory.addDismissButton(d, android.R.string.cancel);
+//
+//				CustomDialogFactory.show(d);
+//			}
+			else
+				ConversationActivity.this.finish();
+			return true;
 		case KeyEvent.KEYCODE_DPAD_UP:
 			--selectedReplyIndex;
 			setSelectedReplyIndex(selectedReplyIndex);
@@ -462,6 +537,11 @@ public final class ConversationActivity
 	@Override
 	public void onConversationCanProceedWithNext() {
 		nextButton.setEnabled(true);
+	}
+
+	@Override
+	public void onConversationCanLeave(boolean b) {
+		leaveButton.setEnabled(b);
 	}
 
 	@Override

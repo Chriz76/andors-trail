@@ -228,6 +228,7 @@ public final class MapController {
 		@Override public void onConversationEndedWithCombat(Monster npc) { }
 		@Override public void onConversationEndedWithRemoval(Monster npc) { }
 		@Override public void onConversationCanProceedWithNext() { }
+		@Override public void onConversationCanLeave(boolean b) { }
 		@Override public void onConversationHasReply(Reply r, String message) { }
 	};
 	public void prepareScriptsOnCurrentMap() {

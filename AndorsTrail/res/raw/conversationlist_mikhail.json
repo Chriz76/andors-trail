@@ -1,32 +1,15 @@
 [
     {
         "id":"mikhail_start_select",
+        "message":"This is a non-cancelable dialogue, hit the back button once and youd get an information toast. Hitting it twice leads to the start screen. (NOLEAVE)",
         "replies":[
             {
-                "nextPhraseID":"mikhail_start_select2",
-                "requires":[
-                    {
-                        "requireType":"questProgress",
-                        "requireID":"mikhail_bread",
-                        "value":100
-                    }
-                ]
-            },
-            {
-                "nextPhraseID":"mikhail_bread_continue",
-                "requires":[
-                    {
-                        "requireType":"questProgress",
-                        "requireID":"mikhail_bread",
-                        "value":10
-                    }
-                ]
-            },
-            {
-                "nextPhraseID":"mikhail_start_select2"
+                "nextPhraseID":"mikhail_start_select",
+                "text":"Try it once more"
             }
         ]
     },
+
     {
         "id":"mikhail_start_select2",
         "replies":[
