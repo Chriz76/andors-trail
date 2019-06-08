@@ -115,6 +115,7 @@ public final class DebugInterface {
 					world.model.player.health.max = world.model.player.baseTraits.maxHP;
 					controllerContext.actorStatsController.setActorMaxHealth(world.model.player);
 					world.model.player.conditions.clear();
+					world.model.player.effectiveConditions.clear();
 					showToast(mainActivity, "DEBUG: hp set to max", Toast.LENGTH_SHORT);
 				}
 			})
@@ -140,7 +141,7 @@ public final class DebugInterface {
 				}
 			})
 		}));
-		
+
 		tpButtons.addAll(Arrays.asList(new DebugButton[] {
 				new DebugButton("tp", new OnClickListener() {
 					@Override
