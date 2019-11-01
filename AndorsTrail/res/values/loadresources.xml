@@ -3,8 +3,8 @@
         <item>@raw/itemcategories_1</item>
         <!--Added by ATCS v0.6.11 for project stoutford_combined-->
         <item>@raw/itemcategories_stoutford_combined</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@raw/itemcategories_omicronrg9</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@raw/itemcategories_brimhaven</item>
     </array>
         
     <array name="loadresource_actorconditions">
@@ -23,8 +23,8 @@
         <item>@raw/actorconditions_trader_teksin</item>
         <!--Added by ATCS v0.6.11 for project stoutford_combined-->
         <item>@raw/actorconditions_stoutford_combined</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@raw/actorconditions_omicronrg9</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@raw/actorconditions_brimhaven</item>
     </array>
         
     <array name="loadresource_items">
@@ -61,8 +61,9 @@
         <item>@raw/itemlist_stoutford_combined</item>
         <!--Added by ATCS v0.6.14 for project bugfix_0_7_4-->
         <item>@raw/itemlist_bugfix_0_7_4</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@raw/itemlist_omicronrg9</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@raw/itemlist_brimhaven</item>
+        <item>@raw/itemlist_brimhaven2</item>
     </array>
         
     <array name="loadresource_droplists">
@@ -94,8 +95,9 @@
         <item>@raw/droplists_stoutford_combined</item>
         <!--Added by ATCS v0.6.14 for project bugfix_0_7_4-->
         <item>@raw/droplists_bugfix_0_7_4</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@raw/droplists_omicronrg9</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@raw/droplists_brimhaven</item>
+        <item>@raw/droplists_brimhaven2</item>
     </array>
         
     <array name="loadresource_quests">
@@ -114,16 +116,16 @@
         <item>@raw/questlist_shortcut_lodar</item>
         <item>@raw/questlist_pathway_fallhaven</item>
         <item>@raw/questlist_halvor_surprise</item>
-                -		
-        
+        -		
         <item>@raw/questlist_stoutford</item>
         <!--Added by ATCS v0.6.11 for project graveyard1-->
         <item>@raw/questlist_graveyard1</item>
         <item>@raw/questlist_guynmart</item>
         <!--Added by ATCS v0.6.11 for project stoutford_combined-->
         <item>@raw/questlist_stoutford_combined</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@raw/questlist_omicronrg9</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@raw/questlist_brimhaven</item>
+        <item>@raw/questlist_brimhaven2</item>
     </array>
         
     <array name="loadresource_conversationlists">
@@ -296,8 +298,11 @@
         <item>@raw/conversationlist_stoutford_combined</item>
         <!--Added by ATCS v0.6.14 for project bugfix_0_7_4-->
         <item>@raw/conversationlist_bugfix_0_7_4</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@raw/conversationlist_omicronrg9</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@raw/conversationlist_brimhaven</item>
+        <item>@raw/conversationlist_brimhaven2</item>
+        <item>@raw/conversationlist_brimhaven_blackjack</item>
+        <item>@raw/conversationlist_brimhaven_blackjack_game</item>
     </array>
         
     <array name="loadresource_monsters">
@@ -335,8 +340,9 @@
         <item>@raw/monsterlist_trader_teksin</item>
         <!--Added by ATCS v0.6.11 for project stoutford_combined-->
         <item>@raw/monsterlist_stoutford_combined</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@raw/monsterlist_omicronrg9</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@raw/monsterlist_brimhaven</item>
+        <item>@raw/monsterlist_brimhaven2</item>
     </array>
         
     <array name="loadresource_maps">
@@ -794,6 +800,7 @@
         <item>@xml/guynmart_main_1</item>
         <item>@xml/guynmart_main_2</item>
         <item>@xml/guynmart_main_3</item>
+        <item>@xml/guynmart_main_3</item>
         <item>@xml/guynmart_passage</item>
         <item>@xml/guynmart_tower_0</item>
         <item>@xml/guynmart_tower_1</item>
@@ -851,12 +858,48 @@
         <item>@xml/lookout_lower</item>
         <item>@xml/lookout_upper</item>
         <item>@xml/waytolake12</item>
-        <!--Added by ATCS v0.6.15 for project v076-->
-        <item>@xml/crackshot_hideout1</item>
-        <item>@xml/crackshot_hideout2</item>
-        <item>@xml/crackshot_hideout3</item>
-        <item>@xml/guildbrig1</item>
-        <item>@xml/guildbrig2</item>
+        <!--Added by ATCS v0.6.15 for project brimhaven-->
+        <item>@xml/basiliskcave1</item>
+        <item>@xml/basiliskcave1_1_1</item>
+        <item>@xml/basiliskcave1_1_2</item>
+        <item>@xml/basiliskcave1_1_3</item>
+        <item>@xml/basiliskcave1_1_4</item>
+        <item>@xml/basiliskcave1_1_5</item>
+        <item>@xml/basiliskcave2</item>
+        <item>@xml/brimhaven1</item>
+        <item>@xml/brimhaven2</item>
+        <item>@xml/brimhaven2_farmhouse</item>
+        <item>@xml/brimhaven2_laundry</item>
+        <item>@xml/brimhaven2_woodcutter</item>
+        <item>@xml/brimhaven3</item>
+        <item>@xml/brimhaven4</item>
+        <item>@xml/brimhaven6</item>
+        <item>@xml/brimhaven7</item>
+        <item>@xml/brimhaven8</item>
+        <item>@xml/brimhaven_anakis_house</item>
+        <item>@xml/brimhaven_armor1</item>
+        <item>@xml/brimhaven_brother1</item>
+        <item>@xml/brimhaven_brother1_to_2</item>
+        <item>@xml/brimhaven_brother2</item>
+        <item>@xml/brimhaven_church</item>
+        <item>@xml/brimhaven_employee</item>
+        <item>@xml/brimhaven_general1</item>
+        <item>@xml/brimhaven_house1</item>
+        <item>@xml/brimhaven_inn_east</item>
+        <item>@xml/brimhaven_metalsmith</item>
+        <item>@xml/brimhaven_prison</item>
+        <item>@xml/brimhaven_school</item>
+        <item>@xml/brimhaven_shop</item>
+        <item>@xml/brimhaven_tavern1</item>
+        <item>@xml/brimhaven_tavern_west</item>
+        <item>@xml/brimhaven_tavern_west_back</item>
+        <item>@xml/brimhaven_weapon1</item>
+        <item>@xml/corner</item>
+        <item>@xml/corner2</item>
+        <item>@xml/heaven</item>
+        <item>@xml/heaven2</item>
+        <item>@xml/room</item>
+        <item>@xml/straight</item>
     </array>
         
 </resources>

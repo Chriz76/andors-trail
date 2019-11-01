@@ -1,30 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <worldmap>
-  <segment id="lostmine1" x="47" y="0">
-    <map id="lostmine1" x="71" y="62"/>
-    <map id="lostmine1a" x="47" y="57"/>
-    <map id="lostmine2" x="94" y="31"/>
-    <map id="lostmine2a" x="125" y="43"/>
-    <map id="lostmine3" x="107" y="0"/>
-  </segment>
-  <segment id="lostmine2" x="7" y="8">
-    <map id="lostmine4" x="7" y="8"/>
-    <map id="lostmine5" x="7" y="26"/>
-    <map id="lostmine6" x="9" y="56"/>
-  </segment>
-  <segment id="lostmine3" x="16" y="8">
-    <map id="lostmine7" x="16" y="8"/>
-    <map id="lostmine8" x="25" y="39"/>
-  </segment>
-  <segment id="lostmine4" x="22" y="0">
-    <map id="lostmine9" x="22" y="42"/>
-    <map id="lostmine10" x="42" y="21"/>
-    <map id="lostmine11" x="45" y="0"/>
-  </segment>
-  <segment id="crackshot_hideout" x="-19" y="-30">
-    <map id="crackshot_hideout1" x="-19" y="-10"/>
-    <map id="crackshot_hideout2" x="9" y="-28"/>
-    <map id="crackshot_hideout3" x="-19" y="-30"/>
+  <segment id="basiliskcave" x="-6" y="-42">
+    <map id="basiliskcave1_1_1" x="-6" y="-12"/>
+    <map id="basiliskcave1_1_2" x="11" y="-5"/>
+    <map id="basiliskcave1_1_3" x="12" y="-28"/>
+    <map id="basiliskcave1_1_4" x="-2" y="-38"/>
+    <map id="basiliskcave1_1_5" x="12" y="-42"/>
   </segment>
   <segment id="lakecave" x="349" y="407">
     <map id="lakecave0" x="349" y="438"/>
@@ -345,6 +326,12 @@
     <map id="guynmart_wood_13" x="70" y="222"/>
     <map id="guynmart_wood_14" x="54" y="222"/>
     <map id="waytolake12" x="678" y="174"/>
+    <map area="brimhaven_area" id="brimhaven1" x="426" y="259"/>
+    <map id="brimhaven4" x="395" y="259"/>
+    <map id="brimhaven2" x="395" y="290"/>
+    <map id="brimhaven3" x="457" y="265"/>
+    <map id="brimhaven7" x="457" y="259"/>
+    <map id="brimhaven8" x="426" y="290"/>
     <namedarea id="crossglen" name="Crossglen" type="settlement"/>
     <namedarea id="crossroads" name="Crossroads Guardhouse" type="other"/>
     <namedarea id="charwoodh" name="Charwood" type="settlement"/>
@@ -357,5 +344,6 @@
     <namedarea id="prim" name="Prim" type="settlement"/>
     <namedarea id="stoutford" name="Stoutford" type="settlement"/>
     <namedarea id="guynmart_area" name="Guynmart Castle" type="other"/>
+    <namedarea id="brimhaven_area" name="Brimhaven" type="settlement"/>
   </segment>
 </worldmap>
