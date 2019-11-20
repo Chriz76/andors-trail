@@ -388,6 +388,8 @@
 	<string name="preferences_movement_dpad_position">Enables a virtual on-screen directional pad to guide movement.</string>
 	<string name="preferences_movement_dpad_minimizeable_title">Minimizable d-pad</string>
 	<string name="preferences_movement_dpad_minimizeable">If the virtual d-pad is enabled, this setting allows the d-pad to be minimized by pressing its center.</string>
+	<string name="preferences_movement_dpad_disables_touch_title">D-pad disables touch movement</string>
+	<string name="preferences_movement_dpad_disables_touch">If the virtual d-pad is enabled, touch movement is disabled.</string>
 
 	<string name="preferences_movement_dpad_positions_disabled">Disabled</string>
 	<string name="preferences_movement_dpad_positions_lower_right">Lower right corner</string>

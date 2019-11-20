@@ -209,6 +209,8 @@ public final class MainView extends SurfaceView
 	private boolean canAcceptInput() {
 		if (!model.uiSelections.isMainActivityVisible) return false;
 		if (!hasSurface) return false;
+		if (preferences.dpadPosition != AndorsTrailPreferences.DPAD_POSITION_DISABLED
+				&& preferences.dpadDisablesTouch) return false;
 		return true;
 	}
 

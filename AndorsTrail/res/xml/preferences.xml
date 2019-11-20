@@ -90,6 +90,11 @@
 			android:defaultValue="true"
 			android:summary="@string/preferences_movement_dpad_minimizeable"
 			android:key="dpadMinimizeable" />
+		<CheckBoxPreference
+			android:title="@string/preferences_movement_dpad_disables_touch_title"
+			android:defaultValue="true"
+			android:summary="@string/preferences_movement_dpad_disables_touch"
+			android:key="dpadDisablesTouch" />
 	</PreferenceCategory>
 	<PreferenceCategory
 		android:title="@string/preferences_ui_category">
