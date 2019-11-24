@@ -49,7 +49,7 @@ public final class AndorsTrailPreferences {
 	public float scalingFactor = 1.0f;
 	public int dpadPosition;
 	public boolean dpadMinimizeable = true;
-	public boolean dpadDisablesTouch = true;
+	public boolean dpadDisablesTouch = false;
 	public boolean optimizedDrawing = false;
 	public boolean highQualityFilters = true;
 	public boolean enableUiAnimations = true;
@@ -73,7 +73,7 @@ public final class AndorsTrailPreferences {
 			dest.scalingFactor = Float.parseFloat(prefs.getString("scaling_factor", "1.0f"));
 			dest.dpadPosition = Integer.parseInt(prefs.getString("dpadposition", Integer.toString(DPAD_POSITION_DISABLED)));
 			dest.dpadMinimizeable = prefs.getBoolean("dpadMinimizeable", true);
-			dest.dpadDisablesTouch = prefs.getBoolean("dpadDisablesTouch", true);
+			dest.dpadDisablesTouch = prefs.getBoolean("dpadDisablesTouch", false);
 			dest.optimizedDrawing = prefs.getBoolean("optimized_drawing", false);
 			dest.highQualityFilters = prefs.getBoolean("high_quality_filters", true);
 			dest.enableUiAnimations = prefs.getBoolean("enableUiAnimations", true);
@@ -95,7 +95,7 @@ public final class AndorsTrailPreferences {
 			dest.scalingFactor = 1.0f;
 			dest.dpadPosition = DPAD_POSITION_DISABLED;
 			dest.dpadMinimizeable = true;
-			dest.dpadDisablesTouch = true;
+			dest.dpadDisablesTouch = false;
 			dest.optimizedDrawing = false;
 			dest.highQualityFilters = true;
 			dest.enableUiAnimations = true;

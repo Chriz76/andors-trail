@@ -195,7 +195,8 @@ public final class MainView extends SurfaceView
 			final int tile_x = (int) Math.floor(((int)event.getX() - screenOffset.x * scale) / scaledTileSize) + mapTopLeft.x;
 			final int tile_y = (int) Math.floor(((int)event.getY() - screenOffset.y * scale) / scaledTileSize) + mapTopLeft.y;
 //			touchedTile = new Coord(tile_x, tile_y);
-			if (inputController.onTouchedTile(tile_x, tile_y)) return true;
+			boolean touchMovementAllowed = (preferences.dpadPosition == AndorsTrailPreferences.DPAD_POSITION_DISABLED || !preferences.dpadDisablesTouch);
+			if (inputController.onTouchedTile(tile_x, tile_y, touchMovementAllowed)) return true;
 			break;
 		case MotionEvent.ACTION_UP:
 		case MotionEvent.ACTION_CANCEL:
@@ -209,8 +210,6 @@ public final class MainView extends SurfaceView
 	private boolean canAcceptInput() {
 		if (!model.uiSelections.isMainActivityVisible) return false;
 		if (!hasSurface) return false;
-		if (preferences.dpadPosition != AndorsTrailPreferences.DPAD_POSITION_DISABLED
-				&& preferences.dpadDisablesTouch) return false;
 		return true;
 	}
 

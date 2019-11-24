@@ -93,14 +93,16 @@ public final class InputController implements OnClickListener, OnLongClickListen
 		controllers.movementController.stopMovement();
 	}
 
-	public boolean onTouchedTile(int tile_x, int tile_y) {
+	public boolean onTouchedTile(int tile_x, int tile_y, boolean touchMovementAllowed) {
 		lastTouchPosition_tileCoords.set(tile_x, tile_y);
 		lastTouchPosition_dx = tile_x - world.model.player.position.x;
 		lastTouchPosition_dy = tile_y - world.model.player.position.y;
 
 		if (world.model.uiSelections.isInCombat) return false;
 
-		controllers.movementController.startMovement(lastTouchPosition_dx, lastTouchPosition_dy, lastTouchPosition_tileCoords);
+		if (touchMovementAllowed) {
+			controllers.movementController.startMovement(lastTouchPosition_dx, lastTouchPosition_dy, lastTouchPosition_tileCoords);
+		}
 		return true;
 	}
 }
