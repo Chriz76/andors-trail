@@ -101,7 +101,7 @@
     },
     {
         "id":"old_basilisk",
-        "name":"Old Basilisk",
+        "name":"Ancient Basilisk",
         "iconID":"monsters_giantbasilisk:0",
         "maxHP":120,
         "unique":1,
@@ -593,5 +593,106 @@
         "name":"Commoner",
         "iconID":"monsters_tometik6:10",
         "phraseID":"brv_villager15"
+    },
+    {
+        "id":"brv_shop_guard",
+        "name":"Guard",
+        "iconID":"monsters_rltiles3:14",
+        "phraseID":"brv_shop_guard_select"
+    },
+    {
+        "id":"brv_shop_owner",
+        "name":"Shop Owner",
+        "iconID":"monsters_tometik1:2",
+        "unique":1,
+        "phraseID":"brv_shop_owner_select",
+        "droplistID":"brv_jewelery"
+    },
+    {
+        "id":"grind1",
+        "name":"Blighted zombie",
+        "iconID":"monsters_tometik8:27",
+        "maxHP":49,
+        "moveCost":5,
+        "monsterClass":"undead",
+        "attackDamage":{
+            "min":7,
+            "max":10
+        },
+        "attackCost":3,
+        "attackChance":98,
+        "criticalSkill":20,
+        "criticalMultiplier":2.0,
+        "blockChance":57,
+        "damageResistance":2
+    },
+    {
+        "id":"grind2",
+        "name":"Tainted zombie",
+        "iconID":"monsters_zombie2:0",
+        "maxHP":87,
+        "moveCost":5,
+        "monsterClass":"undead",
+        "movementAggressionType":"helpOthers",
+        "attackDamage":{
+            "min":3,
+            "max":9
+        },
+        "attackCost":5,
+        "attackChance":137,
+        "blockChance":77,
+        "damageResistance":5
+    },
+    {
+        "id":"grind3",
+        "name":"Wyrm trainer",
+        "iconID":"monsters_rltiles2:0",
+        "maxHP":69,
+        "maxAP":10,
+        "moveCost":5,
+        "monsterClass":"undead",
+        "attackDamage":{
+            "min":2,
+            "max":9
+        },
+        "attackCost":3,
+        "attackChance":90,
+        "blockChance":90,
+        "damageResistance":4
+    },
+    {
+        "id":"grind4",
+        "name":"Dread zombie",
+        "iconID":"monsters_tometik1:78",
+        "maxHP":95,
+        "moveCost":5,
+        "monsterClass":"undead",
+        "attackDamage":{
+            "min":2,
+            "max":5
+        },
+        "attackCost":5,
+        "attackChance":184,
+        "criticalSkill":20,
+        "criticalMultiplier":3.0,
+        "blockChance":102
+    },
+    {
+        "id":"grind5",
+        "name":"Plaguestrider servant",
+        "iconID":"monsters_rltiles2:38",
+        "maxHP":65,
+        "maxAP":10,
+        "moveCost":5,
+        "monsterClass":"undead",
+        "attackDamage":{
+            "min":2,
+            "max":7
+        },
+        "attackCost":3,
+        "attackChance":85,
+        "criticalSkill":120,
+        "criticalMultiplier":3.0,
+        "blockChance":165
     }
 ]

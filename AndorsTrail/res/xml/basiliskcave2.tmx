@@ -47,7 +47,7 @@
   <image source="../drawable/map_entrance_1.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="1841" name="map_entrance_2" tilewidth="32" tileheight="32">
-  <image source="../../../../../Documents/ATCSWorkspace/brimhaven/altered/spritesheets/map_entrance_2.png" width="512" height="256"/>
+  <image source="../drawable/map_entrance_2.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="1969" name="map_fence_1" tilewidth="32" tileheight="32">
   <image source="../drawable/map_fence_1.png" width="512" height="256"/>
@@ -95,7 +95,7 @@
   <image source="../drawable/map_indoor_1.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="3889" name="map_indoor_2" tilewidth="32" tileheight="32">
-  <image source="../../../../../Documents/ATCSWorkspace/brimhaven/altered/spritesheets/map_indoor_2.png" width="512" height="256"/>
+  <image source="../drawable/map_indoor_2.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="4017" name="map_kitchen_1" tilewidth="32" tileheight="32">
   <image source="../drawable/map_kitchen_1.png" width="512" height="256"/>
@@ -107,7 +107,7 @@
   <image source="../drawable/map_pillar_1.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="4401" name="map_pillar_2" tilewidth="32" tileheight="32">
-  <image source="../../../../../Documents/ATCSWorkspace/brimhaven/altered/spritesheets/map_pillar_2.png" width="512" height="256"/>
+  <image source="../drawable/map_pillar_2.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="4529" name="map_plant_1" tilewidth="32" tileheight="32">
   <image source="../drawable/map_plant_1.png" width="512" height="256"/>
@@ -122,7 +122,7 @@
   <image source="../drawable/map_rock_2.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="5041" name="map_roof_1" tilewidth="32" tileheight="32">
-  <image source="../../../../../Documents/ATCSWorkspace/brimhaven/altered/spritesheets/map_roof_1.png" width="512" height="256"/>
+  <image source="../drawable/map_roof_1.png" width="512" height="256"/>
  </tileset>
  <tileset firstgid="5169" name="map_roof_2" tilewidth="32" tileheight="32">
   <image source="../drawable/map_roof_2.png" width="512" height="256"/>
@@ -204,7 +204,7 @@
    eJxjYBi6YLcs7cxeTQezZzMxMMxloq7Z6OZRO4xg5oHoXUC8moruh4ULcthTy3xsZoPATiGgP6CYoBlY3AILB2xmEwPQ4wvZDpRwIDMeccU/NczGpQ9ZnNrpG91OZPNnU9muUUA7AACazBsb
   </data>
  </layer>
- <layer name="Walkable" width="23" height="18" visible="0">
+ <layer name="Walkable" width="23" height="18">
   <data encoding="base64" compression="zlib">
    eJybKcvAMHMUY8XogNrmIvOp7e6hbDatwhxbnJICSDWb3PRAiruJNRtdPTKfHD8TazYlbic2rCgxbxQPDAYAwzbxuQ==
   </data>
@@ -291,7 +291,7 @@
  </layer>
  <layer name="Walkable_WalkAgain" width="23" height="18" visible="0">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AU0ALMlIXgkQyw+Z9aYYIevqPhPXQAAC1UBbE=
+   eJxjYBgFo2AU0ALMlIXgkQxo6X/08B0N76EDAL57BPs=
   </data>
  </layer>
  <objectgroup name="Replace" visible="0">

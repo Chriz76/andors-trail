@@ -407,6 +407,11 @@ public final class ConversationController {
 				return;
 			}
 
+			if (phraseID.equalsIgnoreCase("grindSpawn")) {
+				grindSpawn();
+				return;
+			}
+
 			setCurrentPhrase(res, phraseID);
 
 			if (applyScriptEffects) {
@@ -436,6 +441,77 @@ public final class ConversationController {
 			for (Reply r : currentPhrase.replies) {
 				if (!canSelectReply(world, r)) continue;
 				listener.onConversationHasReply(r, getDisplayMessage(r, player));
+			}
+		}
+
+		private void grindSpawn() {
+			String[] l = {"grind1", "grind2", "grind3", "grind4", "grind5"};
+			if (world.model.statistics.getNumberOfKillsForMonsterType(l[0]) < 14) {
+				spawn(l[0], 14);
+			} else if (world.model.statistics.getNumberOfKillsForMonsterType(l[0]) < 26) {
+				spawn(l[0],12);
+				spawn(l[1],2);
+			} else if (world.model.statistics.getNumberOfKillsForMonsterType(l[0]) < 36) {
+				spawn(l[0], 10);
+				spawn(l[1], 4);
+			} else if (world.model.statistics.getNumberOfKillsForMonsterType(l[0]) < 44) {
+				spawn(l[0], 8);
+				spawn(l[1], 6);
+			} else if (world.model.statistics.getNumberOfKillsForMonsterType(l[0]) < 48) {
+				spawn(l[0], 4);
+				spawn(l[1], 8);
+				spawn(l[1], 2);
+			} else {
+				for (int i = 1; i < l.length; i++) {
+					if (world.model.statistics.getNumberOfKillsForMonsterType(l[i]) < 30) {
+						if (i < l.length - 1) {
+							spawn(l[i], 10);
+							spawn(l[i + 1], 4);
+						} else {
+							spawn(l[i], 14);
+						}
+						break;
+					}
+					else if (world.model.statistics.getNumberOfKillsForMonsterType(l[i]) < 38) {
+						if (i < l.length - 1) {
+							spawn(l[i], 8);
+							spawn(l[i + 1], 6);
+						} else {
+							spawn(l[i], 14);
+						}
+						break;
+					}
+					else if (world.model.statistics.getNumberOfKillsForMonsterType(l[i]) < 42) {
+						if (i < l.length - 2) {
+							spawn(l[i], 4);
+							spawn(l[i + 1], 8);
+							spawn(l[i + 2], 2);
+						} else if (i < l.length - 1) {
+							spawn(l[i], 4);
+							spawn(l[i + 1], 10);
+						} else {
+							spawn(l[i], 14);
+						}
+						break;
+					}
+				}
+			}
+		}
+
+		private void spawn(String s, int i) {
+			if (i >= 8) {
+				controllers.conversationController.spawnAll(world.model.currentMap.name, s + "_8");
+				controllers.conversationController.deactivateSpawnArea(world.model.currentMap.name, s + "_8",false);
+				i-=8;
+			}
+			if (i >= 4) {
+				controllers.conversationController.spawnAll(world.model.currentMap.name, s + "_4");
+				controllers.conversationController.deactivateSpawnArea(world.model.currentMap.name, s + "_4",false);
+				i-=4;
+			}
+			if (i >= 2) {
+				controllers.conversationController.spawnAll(world.model.currentMap.name, s + "_2");
+				controllers.conversationController.deactivateSpawnArea(world.model.currentMap.name, s + "_2",false);
 			}
 		}
 

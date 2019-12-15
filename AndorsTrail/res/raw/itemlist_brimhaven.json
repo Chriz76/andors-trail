@@ -635,5 +635,135 @@
             "increaseAttackChance":1,
             "increaseBlockChance":3
         }
+    },
+    {
+        "id":"diamond_ring",
+        "iconID":"items_misc_3:11",
+        "name":"Diamond Ring",
+        "displaytype":"extraordinary",
+        "hasManualPrice":1,
+        "baseMarketCost":50000,
+        "category":"ring"
+    },
+    {
+        "id":"expensive_necklace",
+        "iconID":"items_jewelry:8",
+        "name":"Diamond Necklace",
+        "displaytype":"extraordinary",
+        "hasManualPrice":1,
+        "baseMarketCost":100000,
+        "category":"neck"
+    },
+    {
+        "id":"necklace_shield3",
+        "iconID":"items_jewelry:7",
+        "name":"Enhanced Shielding necklace",
+        "displaytype":"rare",
+        "baseMarketCost":1255,
+        "category":"neck",
+        "equipEffect":{
+            "increaseBlockChance":15
+        }
+    },
+    {
+        "id":"ring_antipoison",
+        "iconID":"items_japozero:248",
+        "name":"Ring of poison immunity",
+        "displaytype":"extraordinary",
+        "hasManualPrice":1,
+        "baseMarketCost":20000,
+        "category":"ring",
+        "equipEffect":{
+            "addedConditions":[
+                {
+                    "condition":"poison_weak",
+                    "magnitude":-99
+                },
+                {
+                    "condition":"contagion",
+                    "magnitude":-99
+                },
+                {
+                    "condition":"blister",
+                    "magnitude":-99
+                },
+                {
+                    "condition":"poison_irdegh",
+                    "magnitude":-99
+                },
+                {
+                    "condition":"foodp",
+                    "magnitude":-99
+                },
+                {
+                    "condition":"poison_irdegh_weak",
+                    "magnitude":-99
+                },
+                {
+                    "condition":"poison_blood",
+                    "magnitude":-99
+                }
+            ]
+        }
+    },
+    {
+        "id":"ring_venom",
+        "iconID":"items_japozero:253",
+        "name":"Ring of venom",
+        "displaytype":"rare",
+        "hasManualPrice":1,
+        "baseMarketCost":5000,
+        "category":"ring",
+        "hitReceivedEffect":{
+            "conditionsTarget":[
+                {
+                    "condition":"poison_weak",
+                    "magnitude":1,
+                    "duration":12,
+                    "chance":"10"
+                }
+            ]
+        }
+    },
+    {
+        "id":"ring_dmg7",
+        "iconID":"items_jewelry:3",
+        "name":"Ring of damage +7",
+        "displaytype":"rare",
+        "baseMarketCost":3186,
+        "category":"ring",
+        "equipEffect":{
+            "increaseAttackDamage":{
+                "min":7,
+                "max":7
+            }
+        }
+    },
+    {
+        "id":"necklace_for_father1",
+        "iconID":"items_reterski_1:10",
+        "name":"Necklace for father (cheap)",
+        "displaytype":"quest",
+        "hasManualPrice":1,
+        "baseMarketCost":5,
+        "category":"neck"
+    },
+    {
+        "id":"necklace_for_father2",
+        "iconID":"items_reterski_1:11",
+        "name":"Necklace for father",
+        "displaytype":"quest",
+        "hasManualPrice":1,
+        "baseMarketCost":500,
+        "category":"neck"
+    },
+    {
+        "id":"necklace_for_father3",
+        "iconID":"items_reterski_1:9",
+        "name":"Necklace for father (expensive)",
+        "displaytype":"quest",
+        "hasManualPrice":1,
+        "baseMarketCost":50000,
+        "category":"neck"
     }
 ]

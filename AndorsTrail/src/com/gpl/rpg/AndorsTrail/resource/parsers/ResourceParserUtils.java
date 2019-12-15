@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.gpl.rpg.AndorsTrail.AndorsTrailApplication;
+import com.gpl.rpg.AndorsTrail.model.ability.SkillCollection;
 import com.gpl.rpg.AndorsTrail.model.ability.traits.AbilityModifierTraits;
 import com.gpl.rpg.AndorsTrail.model.ability.traits.StatsModifierTraits;
 import com.gpl.rpg.AndorsTrail.resource.DynamicTileLoader;
@@ -106,6 +107,12 @@ public final class ResourceParserUtils {
 		if (o == null) return null;
 
 		ConstRange increaseAttackDamage = parseConstRange(o.optJSONObject(JsonFieldNames.AbilityModifierTraits.increaseAttackDamage));
+		SkillCollection.SkillID addSkill = null;
+		String val = o.optString(JsonFieldNames.AbilityModifierTraits.addSkill, "");
+		if (!val.equals("")) {
+			addSkill = SkillCollection.SkillID.valueOf(val);
+		}
+
 		return new AbilityModifierTraits(
 				o.optInt(JsonFieldNames.AbilityModifierTraits.increaseMaxHP, 0)
 				,o.optInt(JsonFieldNames.AbilityModifierTraits.increaseMaxAP, 0)
@@ -120,6 +127,7 @@ public final class ResourceParserUtils {
 				,o.optInt(JsonFieldNames.AbilityModifierTraits.increaseCriticalSkill, 0)
 				,(float)o.optDouble(JsonFieldNames.AbilityModifierTraits.setCriticalMultiplier, 0)
 				,o.optInt(JsonFieldNames.AbilityModifierTraits.increaseDamageResistance, 0)
+				, addSkill
 		);
 	}
 

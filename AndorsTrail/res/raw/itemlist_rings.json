@@ -1,5 +1,21 @@
 [
     {
+        "id": "ring_goldfinder",
+        "iconID": "items_weapons_2:2",
+        "name": "Gold finder",
+        "displaytype": "extraordinary",
+        "category": "ring",
+        "description": "Gives Treasure hunter skill",
+        "equipEffect": {
+            "addedConditions": [
+                {
+                    "condition": "treasure_hunter_skill",
+                    "magnitude": 1
+                }
+            ]
+        }
+    },
+    {
         "id":"ring_dmg1",
         "iconID":"items_jewelry:0",
         "name":"Ring of damage +1",

@@ -35,7 +35,7 @@ public final class Player extends Actor {
 	public final PlayerBaseTraits baseTraits = new PlayerBaseTraits();
 	public final Range levelExperience; // ranges from 0 to the delta-amount of exp required for next level
 	public final Inventory inventory;
-	private final SparseIntArray skillLevels = new SparseIntArray();
+	private SparseIntArray skillLevels = new SparseIntArray();
 	public int availableSkillIncreases = 0;
 	public int useItemCost;
 	public int reequipCost;
@@ -63,6 +63,7 @@ public final class Player extends Actor {
 		public int damageResistance;
 		public int useItemCost;
 		public int reequipCost;
+		public SparseIntArray skillLevels = new SparseIntArray();
 	}
 
 	public void resetStatsToBaseTraits() {
@@ -79,6 +80,7 @@ public final class Player extends Actor {
 		this.damageResistance = this.baseTraits.damageResistance;
 		this.useItemCost = this.baseTraits.useItemCost;
 		this.reequipCost = this.baseTraits.reequipCost;
+		this.skillLevels = this.baseTraits.skillLevels.clone();
 	}
 
 	public Player() {
@@ -106,6 +108,7 @@ public final class Player extends Actor {
 		baseTraits.damageResistance = 0;
 		baseTraits.useItemCost = 5;
 		baseTraits.reequipCost = 5;
+		baseTraits.skillLevels.clear();
 		this.name = playerName;
 		this.level = 1;
 		this.totalExperience = 1;
@@ -182,8 +185,15 @@ public final class Player extends Actor {
 	}
 
 	public void addSkillLevel(SkillCollection.SkillID skillID) {
+		baseTraits.skillLevels.put(skillID.ordinal(), (baseTraits.skillLevels.get(skillID.ordinal()) + 1));
 		skillLevels.put(skillID.ordinal(), getSkillLevel(skillID) + 1);
 	}
+
+
+	public void addSkillLevelEffect(SkillCollection.SkillID skillID) {
+		skillLevels.put(skillID.ordinal(), getSkillLevel(skillID) + 1);
+	}
+
 	public int getSkillLevel(SkillCollection.SkillID skillID) {
 		return skillLevels.get(skillID.ordinal());
 	}
@@ -333,10 +343,10 @@ public final class Player extends Actor {
 		final int numSkills = src.readInt();
 		for(int i = 0; i < numSkills; ++i) {
 			if (fileversion <= 21) {
-				this.skillLevels.put(i, src.readInt());
+				this.baseTraits.skillLevels.put(i, src.readInt());
 			} else {
 				final int skillID = src.readInt();
-				this.skillLevels.put(skillID, src.readInt());
+				this.baseTraits.skillLevels.put(skillID, src.readInt());
 			}
 		}
 		this.spawnMap = src.readUTF();
@@ -408,10 +418,10 @@ public final class Player extends Actor {
 		inventory.writeToParcel(dest);
 		dest.writeInt(baseTraits.useItemCost);
 		dest.writeInt(baseTraits.reequipCost);
-		dest.writeInt(skillLevels.size());
-		for (int i = 0; i < skillLevels.size(); ++i) {
-			dest.writeInt(skillLevels.keyAt(i));
-			dest.writeInt(skillLevels.valueAt(i));
+		dest.writeInt(baseTraits.skillLevels.size());
+		for (int i = 0; i < baseTraits.skillLevels.size(); ++i) {
+			dest.writeInt(baseTraits.skillLevels.keyAt(i));
+			dest.writeInt(baseTraits.skillLevels.valueAt(i));
 		}
 		dest.writeUTF(spawnMap);
 		dest.writeUTF(spawnPlace);

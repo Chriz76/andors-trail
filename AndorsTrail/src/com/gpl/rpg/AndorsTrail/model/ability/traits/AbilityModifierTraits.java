@@ -1,5 +1,7 @@
 package com.gpl.rpg.AndorsTrail.model.ability.traits;
 
+import com.gpl.rpg.AndorsTrail.model.ability.SkillCollection;
+
 public final class AbilityModifierTraits {
 	public final int increaseMaxHP;
 	public final int increaseMaxAP;
@@ -15,6 +17,7 @@ public final class AbilityModifierTraits {
 	public final int increaseCriticalSkill;
 	public final float setCriticalMultiplier;
 	public final int increaseDamageResistance;
+	public final SkillCollection.SkillID addSkill;
 
 	public AbilityModifierTraits(
 			int increaseMaxHP
@@ -30,6 +33,7 @@ public final class AbilityModifierTraits {
 			, int increaseCriticalSkill
 			, float setCriticalMultiplier
 			, int increaseDamageResistance
+			, SkillCollection.SkillID addSkill
 			) {
 		this.increaseMaxHP = increaseMaxHP;
 		this.increaseMaxAP = increaseMaxAP;
@@ -44,6 +48,7 @@ public final class AbilityModifierTraits {
 		this.increaseCriticalSkill = increaseCriticalSkill;
 		this.setCriticalMultiplier = setCriticalMultiplier;
 		this.increaseDamageResistance = increaseDamageResistance;
+		this.addSkill = addSkill;
 	}
 
 	public int calculateCost(boolean isWeapon) {

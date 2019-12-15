@@ -193,6 +193,10 @@
             {
                 "progress":120,
                 "logText":"captain told about burning the letters"
+            },
+            {
+                "progress":130,
+                "logText":"showed money to shop owner"
             }
         ]
     },
@@ -472,6 +476,10 @@
             {
                 "progress":30,
                 "logText":"never true"
+            },
+            {
+                "progress":40,
+                "logText":"told father about andor"
             }
         ]
     },
@@ -528,6 +536,42 @@
                 "progress":100,
                 "logText":"I collected the repaired dagger from Edrin.",
                 "rewardExperience":1000,
+                "finishesQuest":1
+            }
+        ]
+    },
+    {
+        "id":"brv_present",
+        "name":"Honor your parents",
+        "stages":[
+            {
+                "progress":10,
+                "logText":"You thought it would be a good idea to give a necklace in your family colors red, green, white to your father. "
+            },
+            {
+                "progress":20,
+                "logText":"You bought a necklace."
+            },
+            {
+                "progress":30,
+                "logText":"Your father didn't want to take the necklace. He was angry because you didn't focus on finding your brother Andor. "
+            },
+            {
+                "progress":40,
+                "logText":"Your father didn't seem very hyppy about the cheap necklace.",
+                "rewardExperience":50,
+                "finishesQuest":1
+            },
+            {
+                "progress":50,
+                "logText":"Your father was very happy about the nice necklace.",
+                "rewardExperience":500,
+                "finishesQuest":1
+            },
+            {
+                "progress":60,
+                "logText":"Your father was disapointed about your prententious necklace.",
+                "rewardExperience":50,
                 "finishesQuest":1
             }
         ]

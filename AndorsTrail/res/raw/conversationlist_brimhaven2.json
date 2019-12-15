@@ -816,7 +816,8 @@
                     },
                     {
                         "requireType":"wear",
-                        "requireID":"brv_school_shield"
+                        "requireID":"brv_school_shield",
+                        "value":1
                     }
                 ]
             },
@@ -825,7 +826,8 @@
                 "requires":[
                     {
                         "requireType":"wear",
-                        "requireID":"brv_school_sword"
+                        "requireID":"brv_school_sword",
+                        "value":1
                     },
                     {
                         "requireType":"inventoryKeep",
@@ -839,11 +841,13 @@
                 "requires":[
                     {
                         "requireType":"wear",
-                        "requireID":"brv_school_sword"
+                        "requireID":"brv_school_sword",
+                        "value":1
                     },
                     {
                         "requireType":"wear",
-                        "requireID":"brv_school_shield"
+                        "requireID":"brv_school_shield",
+                        "value":1
                     }
                 ]
             },

@@ -231,6 +231,13 @@ public final class DebugInterface {
 						controllerContext.movementController.placePlayerAsyncAt(MapObject.MapObjectType.newmap, "brimhaven4", "south2", 0, 0);
 					}
 				})
+				,new DebugButton("gr", new OnClickListener() {
+					@Override
+					public void onClick(View arg0) {
+						controllerContext.movementController.placePlayerAsyncAt(MapObject.MapObjectType.newmap, "room", "in", 0, 0);
+					}
+				})
+
 		}));
 		buttonList.addAll(tpButtons);
 		

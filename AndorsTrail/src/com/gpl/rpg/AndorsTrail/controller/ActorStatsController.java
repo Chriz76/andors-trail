@@ -264,6 +264,9 @@ public final class ActorStatsController {
 		if (actor.isPlayer) {
 			addPlayerReequipCost((Player)actor, effects.increaseReequipCost * multiplier);
 			addPlayerUseCost((Player)actor, effects.increaseUseItemCost * multiplier);
+			if (effects.addSkill != null) {
+				((Player) actor).addSkillLevelEffect(effects.addSkill);
+			}
 		}
 		//criticalMultiplier should not be increased. It is always defined by the weapon in use.
 		actor.attackChance += effects.increaseAttackChance * multiplier;

@@ -74,6 +74,16 @@
         }
     },
     {
+        "id":"treasure_hunter_skill",
+        "iconID":"actorconditions_1:64",
+        "name":"Treasure hunter skill",
+        "category":"mental",
+        "isPositive":1,
+        "abilityEffect":{
+            "addSkill": "coinfinder"
+        }
+    },
+    {
         "id":"intoxicated",
         "iconID":"actorconditions_2:1",
         "name":"Intoxicated",

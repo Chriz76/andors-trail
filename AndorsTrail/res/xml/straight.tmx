@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
-<map version="1.0" orientation="orthogonal" width="7" height="16" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="11" height="22" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="map_bed_1" tilewidth="32" tileheight="32">
   <image source="../drawable/map_bed_1.png" width="512" height="256"/>
  </tileset>
@@ -181,69 +181,172 @@
  <tileset firstgid="7449" name="map_window_2" tilewidth="32" tileheight="32">
   <image source="../drawable/map_window_2.png" width="512" height="256"/>
  </tileset>
- <layer name="Ground" width="7" height="16">
+ <layer name="Ground" width="11" height="22">
   <data encoding="base64" compression="zlib">
-   eJw7xsnAcAwP3iGFiWFyJ6QwMUzuMhY8UuSQ1eAKy8tofOQwvIwWtk85EfgyJyofAO20Xro=
+   eJw7xsnAcIwEvEOKMIapPSFFGMPUXiYCj6odVTtY1aJjXHLY8stlHOLY8gtILTZxAC+gzMg=
   </data>
  </layer>
- <layer name="Objects" width="7" height="16">
+ <layer name="Objects" width="11" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYMAPNPkh9B02CM3OhJATh7LfQOVq+XGbs0kAwb4kgCp3CI1PjBnoAN0MdDvoaSY9AQBciwod
+   eJxjYCAdaPIzMLAzQdh32BBiIAATBwFxKLsWKveGDdUcmDg5YJMA8eKHcKjFJT7qhlE3DDUAAAEcE1A=
   </data>
  </layer>
- <layer name="Above" width="7" height="16">
+ <layer name="Above" width="11" height="22">
   <data encoding="base64" compression="zlib">
-   eJxjYMAPDouh8nP5scuJM+HXN5Lk6AkA9UcJ6Q==
+   eJxjYCANHBaD0Ln82OWRxWFqQUCcCVUdOh9ZLbFuIEXtRRx6kMVH3TDqBnLdMNAAANTmGXM=
   </data>
  </layer>
- <layer name="Walkable" width="7" height="16" visible="0">
+ <layer name="Walkable" width="11" height="22">
   <data encoding="base64" compression="zlib">
-   eJzbKMbAsJFCDALYxNDBSJHDFy7UlgMAM/YwMw==
+   eJzbKMbAsJFOGATwyREC6ObgUkOJ2lE3jLqBHDeQktZpoRYA6/ZYnw==
   </data>
  </layer>
  <objectgroup name="Mapevents">
-  <object name="in" type="mapchange" x="96" y="480" width="32" height="32"/>
-  <object name="out_to_room" type="mapchange" x="96" y="64" width="32" height="32">
+  <object name="in" type="mapchange" x="160" y="672" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="Mapevents2">
+  <properties>
+   <property name="active" value="false"/>
+  </properties>
+  <object name="out_to_corner" type="mapchange" x="160" y="64" width="32" height="32">
+   <properties>
+    <property name="map" value="corner"/>
+    <property name="place" value="in"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Mapevents3">
+  <properties>
+   <property name="active" value="false"/>
+  </properties>
+  <object name="out_to_corner2" type="mapchange" x="160" y="64" width="32" height="32">
+   <properties>
+    <property name="map" value="corner2"/>
+    <property name="place" value="in"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Spawn">
+  <object name="grind1_2" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="2"/>
+    <property name="spawngroup" value="grind1"/>
+   </properties>
+  </object>
+  <object name="grind1_4" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="4"/>
+    <property name="spawngroup" value="grind1"/>
+   </properties>
+  </object>
+  <object name="grind1_8" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="8"/>
+    <property name="spawngroup" value="grind1"/>
+   </properties>
+  </object>
+  <object name="grind2_2" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="2"/>
+    <property name="spawngroup" value="grind2"/>
+   </properties>
+  </object>
+  <object name="grind2_4" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="4"/>
+    <property name="spawngroup" value="grind2"/>
+   </properties>
+  </object>
+  <object name="grind2_8" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="8"/>
+    <property name="spawngroup" value="grind2"/>
+   </properties>
+  </object>
+  <object name="grind3_2" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="2"/>
+    <property name="spawngroup" value="grind3"/>
+   </properties>
+  </object>
+  <object name="grind3_4" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="4"/>
+    <property name="spawngroup" value="grind3"/>
+   </properties>
+  </object>
+  <object name="grind3_8" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="8"/>
+    <property name="spawngroup" value="grind3"/>
+   </properties>
+  </object>
+  <object name="grind4_2" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="2"/>
+    <property name="spawngroup" value="grind4"/>
+   </properties>
+  </object>
+  <object name="grind4_4" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="4"/>
+    <property name="spawngroup" value="grind4"/>
+   </properties>
+  </object>
+  <object name="grind4_8" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="8"/>
+    <property name="spawngroup" value="grind4"/>
+   </properties>
+  </object>
+  <object name="grind5_2" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="2"/>
+    <property name="spawngroup" value="grind5"/>
+   </properties>
+  </object>
+  <object name="grind5_4" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="4"/>
+    <property name="spawngroup" value="grind5"/>
+   </properties>
+  </object>
+  <object name="grind5_8" type="spawn" x="32" y="96" width="288" height="512">
+   <properties>
+    <property name="active" value="false"/>
+    <property name="quantity" value="8"/>
+    <property name="spawngroup" value="grind5"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Keys">
+  <object name="grind_random" type="script" x="128" y="96" width="96" height="32"/>
+  <object name="grindSpawn" type="script" x="160" y="640" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="Replace"/>
+ <objectgroup name="Mapevents4">
+  <properties>
+   <property name="active" value="false"/>
+  </properties>
+  <object name="out_to_room" type="mapchange" x="160" y="64" width="32" height="32">
    <properties>
     <property name="map" value="room"/>
     <property name="place" value="in"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Mapevents2">
-  <properties>
-   <property name="active" value="false"/>
-  </properties>
-  <object name="out_to_corner" type="mapchange" x="96" y="64" width="32" height="32">
-   <properties>
-    <property name="map" value="corner"/>
-    <property name="place" value="in2"/>
-   </properties>
-  </object>
-  <object name="in2" type="mapchange" x="96" y="480" width="32" height="32"/>
- </objectgroup>
- <objectgroup name="Mapevents3">
-  <properties>
-   <property name="active" value="false"/>
-  </properties>
-  <object name="out_to_corner2" type="mapchange" x="96" y="64" width="32" height="32">
-   <properties>
-    <property name="map" value="corner2"/>
-    <property name="place" value="in3"/>
-   </properties>
-  </object>
-  <object name="in3" type="mapchange" x="96" y="480" width="32" height="32"/>
- </objectgroup>
- <objectgroup name="Spawn">
-  <object name="cavesnake2" type="spawn" x="32" y="128" width="160" height="320">
-   <properties>
-    <property name="quantity" value="4"/>
-    <property name="spawngroup" value="cavesnake2"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup name="Keys">
-  <object name="select" type="script" x="64" y="96" width="96" height="32"/>
- </objectgroup>
- <objectgroup name="Replace"/>
 </map>
