@@ -69,7 +69,7 @@ public final class DebugInterface {
 			,new DebugButton("dmg", new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					world.model.player.damagePotential.set(500, 500);
+					world.model.player.setDamagePotential(500, 500, false);
 					world.model.player.attackChance = 500;
 					world.model.player.attackCost = 1;
 					showToast(mainActivity, "DEBUG: damagePotential=500, chance=500%, cost=1", Toast.LENGTH_SHORT);

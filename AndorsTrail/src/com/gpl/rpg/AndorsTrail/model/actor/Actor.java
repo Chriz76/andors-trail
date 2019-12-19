@@ -32,6 +32,7 @@ public class Actor {
 	public int criticalSkill;
 	public float criticalMultiplier;
 	public final Range damagePotential = new Range();
+	public final Range nonWeaponDamage = new Range();
 	public int blockChance;
 	public int damageResistance;
 	public ItemTraits_OnUse[] onHitEffects;
@@ -41,6 +42,7 @@ public class Actor {
 	public long vfxStartTime = 0;
 	public int vfxDuration = 0;
 	public final Coord lastPosition = new Coord();
+
 
 	public Actor(
 			Size tileSize
@@ -99,5 +101,21 @@ public class Actor {
 			if (c.conditionType.conditionTypeID.equals(conditionTypeID)) return true;
 		}
 		return false;
+	}
+
+	public void addDamagePotential(int add, int addMax, boolean isNonWeaponDamage, boolean addMayOverflow) {
+		damagePotential.addToMax(addMax);
+		damagePotential.add(add, addMayOverflow);
+		if (isNonWeaponDamage) {
+			nonWeaponDamage.addToMax(addMax);
+			nonWeaponDamage.add(add, addMayOverflow);
+		}
+	}
+
+	public void setDamagePotential(int set, int setMax, boolean isNonWeaponDamage) {
+		damagePotential.set(setMax, set);
+		if (isNonWeaponDamage) {
+			nonWeaponDamage.set(setMax, set);
+		}
 	}
 }

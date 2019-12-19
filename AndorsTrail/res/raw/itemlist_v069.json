@@ -14,6 +14,7 @@
             },
             "increaseMaxHP":5,
             "increaseAttackCost":5,
+			"setNonWeaponDamageModifier":125,
             "increaseAttackChance":21
         },
         "hitEffect":{
@@ -29,6 +30,39 @@
             }
         }
     },
+    {
+        "id":"rapier_lifesteal2",
+        "iconID":"items_weapons:71",
+        "name":"Rapier of lifesteal2",
+        "displaytype":"legendary",
+        "hasManualPrice":1,
+        "baseMarketCost":0,
+        "category":"rapier",
+        "equipEffect":{
+            "increaseAttackDamage":{
+                "min":1,
+                "max":6
+            },
+            "increaseMaxHP":5,
+			"setNonWeaponDamageModifier":125,
+            "increaseAttackCost":5,
+            "increaseAttackChance":21,
+            "setNonWeaponDamageModifier": 200
+        },
+        "hitEffect":{
+            "increaseCurrentHP":{
+                "min":0,
+                "max":3
+            }
+        },
+        "killEffect":{
+            "increaseCurrentHP":{
+                "min":3,
+                "max":3
+            }
+        }
+    },
+
     {
         "id":"dagger_barbed",
         "iconID":"items_weapons:17",
@@ -68,6 +102,7 @@
             },
             "increaseMaxAP":2,
             "increaseAttackCost":5,
+			"setNonWeaponDamageModifier":125,
             "increaseAttackChance":25,
             "increaseBlockChance":5,
             "addedConditions":[
@@ -92,6 +127,7 @@
                 "max":6
             },
             "increaseAttackCost":5,
+			"setNonWeaponDamageModifier":125,
             "increaseAttackChance":21,
             "increaseBlockChance":5
         },
@@ -121,6 +157,7 @@
             },
             "increaseMaxAP":2,
             "increaseAttackCost":7,
+            "setNonWeaponDamageModifier":175,
             "increaseAttackChance":25,
             "increaseCriticalSkill":10,
             "setCriticalMultiplier":2.0
@@ -334,6 +371,7 @@
                 "max":12
             },
             "increaseAttackCost":6,
+			"setNonWeaponDamageModifier":175,
             "increaseAttackChance":9
         }
     },
@@ -361,6 +399,7 @@
                 "max":15
             },
             "increaseAttackCost":7,
+            "setNonWeaponDamageModifier":175,
             "increaseAttackChance":15,
             "increaseCriticalSkill":5,
             "setCriticalMultiplier":3.0

@@ -75,18 +75,25 @@ public final class AbilityModifierInfoView extends LinearLayout {
 			displayIfNonZero(traits.increaseAttackChance, abilitymodifierinfo_change_attack_chance, R.string.iteminfo_effect_increase_attack_chance, R.string.iteminfo_effect_decrease_attack_chance);
 		}
 
-		if (traits.increaseMinDamage != 0 || traits.increaseMaxDamage != 0) {
+		if (traits.increaseMinDamage != 0 || traits.increaseMaxDamage != 0
+				|| (traits.setNonWeaponDamageModifier > 0 && traits.setNonWeaponDamageModifier != 100)) {
+			String text;
 			if (traits.increaseMinDamage == traits.increaseMaxDamage) {
 				int label = R.string.iteminfo_effect_increase_attack_damage;
 				if (traits.increaseMinDamage < 0) label = R.string.iteminfo_effect_decrease_attack_damage;
 				else if (isWeapon) label = R.string.iteminfo_effect_weapon_attack_damage;
-				abilitymodifierinfo_change_attack_damage.setText(res.getString(label, Math.abs(traits.increaseMinDamage)));
+				text = res.getString(label, Math.abs(traits.increaseMinDamage));
 			} else {
 				int label = R.string.iteminfo_effect_increase_attack_damage_minmax;
 				if (traits.increaseMinDamage < 0) label = R.string.iteminfo_effect_decrease_attack_damage_minmax;
 				else if (isWeapon) label = R.string.iteminfo_effect_weapon_attack_damage_minmax;
-				abilitymodifierinfo_change_attack_damage.setText(res.getString(label, Math.abs(traits.increaseMinDamage), Math.abs(traits.increaseMaxDamage)));
+				text = (res.getString(label, Math.abs(traits.increaseMinDamage), Math.abs(traits.increaseMaxDamage)));
 			}
+			if (traits.setNonWeaponDamageModifier > 0 && traits.setNonWeaponDamageModifier != 100) {
+				text += ", Non-weapon modifier " + traits.setNonWeaponDamageModifier + "%";
+			}
+
+			abilitymodifierinfo_change_attack_damage.setText(text);
 			abilitymodifierinfo_change_attack_damage.setVisibility(View.VISIBLE);
 		}
 	}

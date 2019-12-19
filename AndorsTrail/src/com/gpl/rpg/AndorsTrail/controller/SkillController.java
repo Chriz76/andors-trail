@@ -31,8 +31,10 @@ public final class SkillController {
 
 	public void applySkillEffects(Player player) {
 		player.attackChance += SkillCollection.PER_SKILLPOINT_INCREASE_WEAPON_CHANCE * player.getSkillLevel(SkillID.weaponChance);
-		player.damagePotential.addToMax(SkillCollection.PER_SKILLPOINT_INCREASE_WEAPON_DAMAGE_MAX * player.getSkillLevel(SkillID.weaponDmg));
-		player.damagePotential.add(SkillCollection.PER_SKILLPOINT_INCREASE_WEAPON_DAMAGE_MIN * player.getSkillLevel(SkillID.weaponDmg), false);
+		player.addDamagePotential(
+				SkillCollection.PER_SKILLPOINT_INCREASE_WEAPON_DAMAGE_MIN * player.getSkillLevel(SkillID.weaponDmg),
+				SkillCollection.PER_SKILLPOINT_INCREASE_WEAPON_DAMAGE_MAX * player.getSkillLevel(SkillID.weaponDmg),
+				true, false);
 		player.blockChance += SkillCollection.PER_SKILLPOINT_INCREASE_DODGE * player.getSkillLevel(SkillID.dodge);
 		player.damageResistance += SkillCollection.PER_SKILLPOINT_INCREASE_BARKSKIN * player.getSkillLevel(SkillID.barkSkin);
 		if (player.hasCriticalSkillEffect()) {
@@ -208,8 +210,10 @@ public final class SkillController {
 		if (unarmedLevel > 0) {
 			if (isUnarmed(player)) {
 				playerTraits.attackChance += SkillCollection.PER_SKILLPOINT_INCREASE_UNARMED_AC * unarmedLevel;
-				playerTraits.damagePotential.addToMax(SkillCollection.PER_SKILLPOINT_INCREASE_UNARMED_DMG * unarmedLevel);
-				playerTraits.damagePotential.add(SkillCollection.PER_SKILLPOINT_INCREASE_UNARMED_DMG * unarmedLevel, false);
+				playerTraits.addDamagePotential(
+						SkillCollection.PER_SKILLPOINT_INCREASE_UNARMED_DMG * unarmedLevel,
+						SkillCollection.PER_SKILLPOINT_INCREASE_UNARMED_DMG * unarmedLevel,
+						true, false);
 				playerTraits.blockChance += SkillCollection.PER_SKILLPOINT_INCREASE_UNARMED_BC * unarmedLevel;
 			}
 		}
@@ -310,8 +314,8 @@ public final class SkillController {
 		if (isWielding2HandItem(mainHandItem, offHandItem)) {
 			int skillLevelFightStyle = player.getSkillLevel(SkillID.fightstyle2hand);
 			int skillLevelSpecialization = player.getSkillLevel(SkillID.specialization2hand);
-			addPercentDamage(playerTraits, mainHandItem, skillLevelFightStyle * SkillCollection.PER_SKILLPOINT_INCREASE_FIGHTSTYLE_2HAND_DMG_PERCENT, 0);
-			addPercentDamage(playerTraits, mainHandItem, skillLevelSpecialization * SkillCollection.PER_SKILLPOINT_INCREASE_SPECIALIZATION_2HAND_DMG_PERCENT, 0);
+			addPercentWeaponDamage(playerTraits, mainHandItem, skillLevelFightStyle * SkillCollection.PER_SKILLPOINT_INCREASE_FIGHTSTYLE_2HAND_DMG_PERCENT, 0);
+			addPercentWeaponDamage(playerTraits, mainHandItem, skillLevelSpecialization * SkillCollection.PER_SKILLPOINT_INCREASE_SPECIALIZATION_2HAND_DMG_PERCENT, 0);
 			addPercentAttackChance(playerTraits, mainHandItem, skillLevelSpecialization * SkillCollection.PER_SKILLPOINT_INCREASE_SPECIALIZATION_2HAND_AC_PERCENT, 0);
 		}
 
@@ -321,7 +325,7 @@ public final class SkillController {
 			addPercentAttackChance(playerTraits, mainHandItem, skillLevelFightStyle * SkillCollection.PER_SKILLPOINT_INCREASE_FIGHTSTYLE_WEAPON_AC_PERCENT, 0);
 			addPercentBlockChance(playerTraits, offHandItem, skillLevelFightStyle * SkillCollection.PER_SKILLPOINT_INCREASE_FIGHTSTYLE_SHIELD_BC_PERCENT, 0);
 			addPercentAttackChance(playerTraits, mainHandItem, skillLevelSpecialization * SkillCollection.PER_SKILLPOINT_INCREASE_SPECIALIZATION_WEAPON_AC_PERCENT, 0);
-			addPercentDamage(playerTraits, mainHandItem, skillLevelSpecialization * SkillCollection.PER_SKILLPOINT_INCREASE_SPECIALIZATION_WEAPON_DMG_PERCENT, 0);
+			addPercentWeaponDamage(playerTraits, mainHandItem, skillLevelSpecialization * SkillCollection.PER_SKILLPOINT_INCREASE_SPECIALIZATION_WEAPON_DMG_PERCENT, 0);
 		}
 
 		if (isDualWielding(mainHandItem, offHandItem)) {
@@ -352,7 +356,7 @@ public final class SkillController {
 
 				addPercentAttackChance(player, offHandItem, percent, 100);
 				addPercentBlockChance(player, offHandItem, percent, 100);
-				addPercentDamage(player, offHandItem, percent, 100);
+				addPercentWeaponDamage(player, offHandItem, percent, 100);
 				addPercentCriticalSkill(player, offHandItem, percent, 100);
 				addPercentMaxHPBoost(player, offHandItem, percent, 100);
 				addPercentDamageResistance(player, offHandItem, percent, 100);
@@ -382,10 +386,12 @@ public final class SkillController {
 		player.blockChance += getPercentage(itemType.effects_equip.stats.increaseBlockChance, percentForPositiveValues, percentForNegativeValues);
 	}
 
-	private static void addPercentDamage(Player player, ItemType itemType, int percentForPositiveValues, int percentForNegativeValues) {
+	private static void addPercentWeaponDamage(Player player, ItemType itemType, int percentForPositiveValues, int percentForNegativeValues) {
 		if (itemType.effects_equip == null) return;
-		player.damagePotential.addToMax(getPercentage(itemType.effects_equip.stats.increaseMaxDamage, percentForPositiveValues, percentForNegativeValues));
-		player.damagePotential.add(getPercentage(itemType.effects_equip.stats.increaseMinDamage, percentForPositiveValues, percentForNegativeValues), false);
+		player.addDamagePotential(
+				getPercentage(itemType.effects_equip.stats.increaseMinDamage, percentForPositiveValues, percentForNegativeValues),
+				getPercentage(itemType.effects_equip.stats.increaseMaxDamage, percentForPositiveValues, percentForNegativeValues),
+				false, false);
 	}
 
 	private static void addPercentCriticalSkill(Player player, ItemType itemType, int percentForPositiveValues, int percentForNegativeValues) {

@@ -249,11 +249,11 @@ public final class ActorStatsController {
 
 	private void applyEffectsFromCurrentConditions(Actor actor) {
 		for (ActorCondition c : actor.conditions) {
-			applyAbilityEffects(actor, c.conditionType.abilityEffect, c.magnitude);
+			applyAbilityEffects(actor, c.conditionType.abilityEffect, c.magnitude, false);
 		}
 	}
 
-	public void applyAbilityEffects(Actor actor, AbilityModifierTraits effects, int multiplier) {
+	public void applyAbilityEffects(Actor actor, AbilityModifierTraits effects, int multiplier, boolean isWeapon) {
 		if (effects == null) return;
 
 		addActorMaxHealth(actor, effects.increaseMaxHP * multiplier, false);
@@ -268,8 +268,10 @@ public final class ActorStatsController {
 		//criticalMultiplier should not be increased. It is always defined by the weapon in use.
 		actor.attackChance += effects.increaseAttackChance * multiplier;
 		actor.criticalSkill += effects.increaseCriticalSkill * multiplier;
-		actor.damagePotential.add(effects.increaseMinDamage * multiplier, true);
-		actor.damagePotential.addToMax(effects.increaseMaxDamage * multiplier);
+		actor.addDamagePotential(
+				effects.increaseMinDamage * multiplier,
+				effects.increaseMaxDamage * multiplier,
+				!isWeapon,true);
 		actor.blockChance += effects.increaseBlockChance * multiplier;
 		actor.damageResistance += effects.increaseDamageResistance * multiplier;
 
@@ -278,12 +280,14 @@ public final class ActorStatsController {
 	}
 
 	public void recalculatePlayerStats(Player player) {
+        player.nonWeaponDamage.set(0,0);
 		player.resetStatsToBaseTraits();
 		player.recalculateLevelExperience();
 		controllers.itemController.applyInventoryEffects(player);
 		controllers.skillController.applySkillEffects(player);
 		applyEffectsFromCurrentConditions(player);
 		ItemController.recalculateHitEffectsFromWornItems(player);
+        ItemController.applyDamageModifier(player);
 		capActorHealthAtMax(player);
 		capActorAPAtMax(player);
 	}

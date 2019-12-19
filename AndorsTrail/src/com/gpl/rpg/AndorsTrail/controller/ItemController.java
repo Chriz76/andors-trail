@@ -19,6 +19,8 @@ import com.gpl.rpg.AndorsTrail.model.item.ItemTraits_OnUse;
 import com.gpl.rpg.AndorsTrail.model.item.ItemType;
 import com.gpl.rpg.AndorsTrail.model.item.Loot;
 
+import static java.lang.Math.min;
+
 public final class ItemController {
 
 	private final ControllerContext controllers;
@@ -176,7 +178,7 @@ public final class ItemController {
 			if (SkillController.isDualWielding(mainHandItem, type)) return;
 		}
 		if (type.effects_equip != null && type.effects_equip.stats != null)
-		controllers.actorStatsController.applyAbilityEffects(player, type.effects_equip.stats, 1);
+		controllers.actorStatsController.applyAbilityEffects(player, type.effects_equip.stats, 1, type.isWeapon());
 	}
 
 	public static void recalculateHitEffectsFromWornItems(Player player) {
@@ -383,4 +385,23 @@ public final class ItemController {
 		}
 	}
 
+	public static void applyDamageModifier(Player player) {
+		ItemType itemType = player.inventory.getItemTypeInWearSlot(Inventory.WearSlot.weapon);
+		int modifier1 = -1;
+		int modifier2 = -1;
+		if (itemType != null) modifier1 = itemType.effects_equip.stats.setNonWeaponDamageModifier;
+		itemType = player.inventory.getItemTypeInWearSlot(Inventory.WearSlot.shield);
+		if (itemType != null && itemType.isWeapon()) modifier2 = itemType.effects_equip.stats.setNonWeaponDamageModifier;
+
+		int modifier = 100;
+		if (modifier1 >= 0 && modifier2 >= 0) modifier = Math.min(modifier1, modifier2);
+		else if (modifier1 <= 0 && modifier2 >= 0) modifier = modifier2;
+		else if (modifier2 <= 0 && modifier1 >= 0) modifier = modifier1;
+
+		if (modifier != 100) {
+			player.addDamagePotential(Math.round(player.nonWeaponDamage.current * ((modifier - 100)/100f)),
+					Math.round(player.nonWeaponDamage.max * ((modifier - 100)/100f)),
+					false, true);
+		}
+	}
 }

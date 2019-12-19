@@ -75,6 +75,7 @@ public final class Player extends Actor {
 		this.criticalSkill = this.baseTraits.criticalSkill;
 		this.criticalMultiplier = this.baseTraits.criticalMultiplier;
 		this.damagePotential.set(this.baseTraits.damagePotential);
+		this.nonWeaponDamage.set(this.baseTraits.damagePotential);
 		this.blockChance = this.baseTraits.blockChance;
 		this.damageResistance = this.baseTraits.damageResistance;
 		this.useItemCost = this.baseTraits.useItemCost;

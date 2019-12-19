@@ -117,6 +117,7 @@
             },
             "increaseMaxHP":0,
             "increaseAttackCost":5,
+			"setNonWeaponDamageModifier":125,
             "increaseAttackChance":19,
             "increaseCriticalSkill":10,
             "increaseBlockChance":0,
