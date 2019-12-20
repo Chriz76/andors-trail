@@ -370,7 +370,7 @@ public final class Player extends Actor {
 			}
 		}
 
-		if (fileversion >= 48) {
+		if (fileversion >= 49) {
 			this.id = src.readUTF();
 			this.savedVersion = src.readLong();
 		}

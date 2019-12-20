@@ -349,7 +349,7 @@ public final class Savegames {
 				this.iconID = TileManager.CHAR_HERO_0;
 			}
 
-			if (fileversion >= 48) {
+			if (fileversion >= 49) {
 				this.isDead = src.readBoolean();
 				this.hasUnlimitedSaves = src.readBoolean();
 				this.playerId = src.readUTF();

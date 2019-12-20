@@ -184,7 +184,7 @@ public final class GameStatistics {
 		}
 		this.spentGold = src.readInt();
 
-		if (fileversion < 48) return;
+		if (fileversion < 49) return;
 
 		this.startLives = src.readInt();
 		this.unlimitedSaves = src.readBoolean();
