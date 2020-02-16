@@ -120,6 +120,19 @@ public final class HeroinfoActivity_Quests extends Fragment {
 			Quest q = world.quests.getQuest(questProgressID);
 			if (q == null) continue; // This should not happen
 			if (!q.showInLog) continue; // Do not show
+<<<<<<< nut_test_brimhaven
+			if (player.hasAnyQuestProgress(q.questID)) {
+				boolean isCompleted = q.isCompleted(player);
+
+				int v = world.model.uiSelections.selectedQuestFilter;
+				if (v == 0) { // Active quests
+					if (isCompleted) continue;
+				} else if (v == 1) { // All quests
+					// Always show.
+				} else if (v == 2) { // Completed quests
+					if (!isCompleted) continue;
+				}
+=======
 			boolean isCompleted = q.isCompleted(player);
 
 			int v = world.model.uiSelections.selectedQuestFilter;
@@ -130,6 +143,7 @@ public final class HeroinfoActivity_Quests extends Fragment {
 			} else if (v == 2) { // Completed quests
 				if (!isCompleted) continue;
 			}
+>>>>>>> local
 
 			int statusResId;
 			if (isCompleted) {

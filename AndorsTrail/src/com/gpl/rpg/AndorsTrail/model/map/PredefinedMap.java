@@ -64,6 +64,16 @@ public final class PredefinedMap {
 		assert(size.height > 0);
 		this.isOutdoors = isOutdoors;
 		this.initialColorFilter = colorFilter;
+
+		if (AndorsTrailApplication.DEVELOPMENT_VALIDATEDATA) {
+			for (int i = 0; i < spawnAreas.length; i++) {
+				for (int j = i + 1; j < spawnAreas.length; j++) {
+					if (spawnAreas[i].areaID.equals(spawnAreas[j].areaID)) {
+						L.log("WARNING: duplicate areaID " + spawnAreas[i].areaID + " in map " + this.name);
+					}
+				}
+			}
+		}
 	}
 
 	public final boolean isOutside(final Coord p) { return isOutside(p.x, p.y); }
@@ -254,10 +264,12 @@ public final class PredefinedMap {
 		if (shouldLoadMapData) {
 			loadedSpawnAreas = src.readInt();
 			for(int i = 0; i < loadedSpawnAreas; ++i) {
-				if (AndorsTrailApplication.DEVELOPMENT_VALIDATEDATA) {
-					if (i >= this.spawnAreas.length) {
+				boolean skipArea = false;
+				if (i >= this.spawnAreas.length) {
+					if (AndorsTrailApplication.DEVELOPMENT_VALIDATEDATA) {
 						L.log("WARNING: Trying to load monsters from savegame in map " + this.name + " for spawn #" + i + ". This will totally fail.");
 					}
+					skipArea = true;
 				}
 				if(fileversion >= 43) {
 					//Spawn areas now have unique IDs. Need to check as maps can change.
@@ -272,11 +284,14 @@ public final class PredefinedMap {
 						} 
 						j = (j+1)%spawnAreas.length;
 					} while (j != i);
-					if (AndorsTrailApplication.DEVELOPMENT_VALIDATEDATA) {
-						if (!found) {
+					if (!found) {
+						if (AndorsTrailApplication.DEVELOPMENT_VALIDATEDATA) {
 							L.log("WARNING: Trying to load monsters from savegame in map " + this.name + " for spawn #" + id + " but this area cannot be found. This will totally fail.");
 						}
+						MonsterSpawnArea dummy = new MonsterSpawnArea(null, null, null, null, null, false, false, null, false);
+						dummy.readFromParcel(src, world, fileversion);
 					}
+
 				} else {
 					this.spawnAreas[i].readFromParcel(src, world, fileversion);
 				}
