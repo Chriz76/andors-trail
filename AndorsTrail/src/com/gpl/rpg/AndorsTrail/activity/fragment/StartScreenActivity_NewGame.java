@@ -1,6 +1,7 @@
 package com.gpl.rpg.AndorsTrail.activity.fragment;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -103,6 +104,21 @@ public class StartScreenActivity_NewGame extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
+				Dialog d = new Dialog(getActivity());
+
+				switch (v.getId()) {
+					case R.id.newgame_sprite0:
+						d.setContentView(R.layout.hero);
+						break;
+					case R.id.newgame_sprite1:
+						d.setContentView(R.layout.hero1);
+						break;
+					default:
+						d.setContentView(R.layout.hero2);
+						break;
+				}
+
+				d.show();
 				group.check(v.getId());
 			}
 		};
